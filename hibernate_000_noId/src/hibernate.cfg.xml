@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/hibernate</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">123</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- <property name="connection.pool_size">1</property> -->
+		<!-- Enable Hibernate's automatic session context management -->
+		<!-- 如果没有开始如下配置，在没有和spring集成的情况下 没办法调用getCurrentSession() -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">update</property>
+
+		<!-- <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> 
+			<property name="connection.username">scott</property> <property name="connection.password">tiger</property> 
+			<property name="connection.url">jdbc:oracle:thin:@localhost:1521:test</property> 
+			<property name="dialect">org.hibernate.dialect.OracleDialect</property> -->
+		<mapping class="com.Kimalu.model.test.User1"/>
+		<mapping class="com.Kimalu.model.test.User3"/>
+		<mapping class="com.Kimalu.model.test.User4"/>
+		<mapping class="com.Kimalu.model.test.Teacher"/>
+		<mapping resource="com/Kimalu/model/Student.hbm.xml"/>
+	</session-factory>
+
+</hibernate-configuration>
